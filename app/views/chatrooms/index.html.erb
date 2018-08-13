@@ -17,6 +17,11 @@
         <td><%= link_to 'Show', chatroom %></td>
         <td><%= link_to 'Edit', edit_chatroom_path(chatroom) %></td>
         <td><%= link_to 'Destroy', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if in_chatroom?(chatroom) %>
+          <td><%= link_to 'Leave', chatroom_chatroom_users_path(chatroom), method: :delete %></td>
+        <% else %>
+          <td><%= link_to 'Join', chatroom_chatroom_users_path(chatroom), method: :post %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
